@@ -1,7 +1,9 @@
+"""Fetch raw wikitext from the Wookieepedia API."""
+
 # Standard library imports (built into Python, no install needed)
 import json
 
-# Third-party import (installed from requirements.txt)
+# Third-party import (installed with uv)
 import requests
 
 API_URL = "https://starwars.fandom.com/api.php"

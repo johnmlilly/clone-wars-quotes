@@ -1,3 +1,5 @@
+"""Load quotes.json and look up quotes."""
+
 import random
 import json
 from pathlib import Path
@@ -34,6 +36,7 @@ def filter_quotes(season: int | None = None, search: str | None = None) -> list[
 
 
 def random_quote() -> Quote:
+    """Pick one quote at random."""
     return random.choice(QUOTES)
 
 

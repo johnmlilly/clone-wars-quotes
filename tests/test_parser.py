@@ -1,11 +1,6 @@
-import sys
-from pathlib import Path
+"""Tests for the wikitext parser (no network needed)."""
 
-# The scraper files import each other as plain modules (`from explore import ...`),
-# so put scraper/ on Python's import path before importing them.
-sys.path.insert(0, str(Path(__file__).parent.parent / "scraper"))
-
-from parser_episode import clean_markup, parse_episode  # noqa: E402
+from parser_episode import clean_markup, parse_episode
 
 SAMPLE_WIKITEXT = """{{TelevisionEpisode
 |season=[[The Clone Wars: Season One|One]]<ref name="Guide" />
@@ -44,5 +39,8 @@ def test_seasons():
         "One": 1, "Two": 2, "Three": 3, "Four": 4,
         "Five": 5, "Six": 6, "Seven": 7,
     }.items():
-        wikitext = SAMPLE_WIKITEXT.replace("|season=[[The Clone Wars: Season One|One]]", f"|season=[[The Clone Wars: Season {word}|{word}]]")
+        wikitext = SAMPLE_WIKITEXT.replace(
+            "|season=[[The Clone Wars: Season One|One]]",
+            f"|season=[[The Clone Wars: Season {word}|{word}]]",
+        )
         assert parse_episode("Some Episode", wikitext)["season"] == number

@@ -1,3 +1,5 @@
+"""Scrape every episode's moral and save them to data/quotes.json."""
+
 import json
 import time
 from pathlib import Path
@@ -29,6 +31,7 @@ def fetch_episode_titles() -> list[str]:
 
 
 def main() -> None:
+    """Fetch all episodes, parse their morals and write quotes.json."""
     titles = fetch_episode_titles()
     print(f"Found {len(titles)} episode pages")
 
@@ -39,7 +42,7 @@ def main() -> None:
         print(f"[{number}/{len(titles)}] {title}")
         try:
             episode = parse_episode(title, fetch_wikitext(title))
-        except Exception as error:
+        except (requests.RequestException, KeyError) as error:
             # One bad page shouldn't kill the whole run: note it and move on.
             skipped.append(f"{title} ({type(error).__name__}: {error})")
             continue

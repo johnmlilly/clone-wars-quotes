@@ -1,11 +1,14 @@
+"""Tests for the API routes."""
+
 import pytest
 from fastapi.testclient import TestClient
 
 from app.main import app
 
 
-@pytest.fixture
-def client():
+@pytest.fixture(name="client")
+def fixture_client():
+    """A test client that calls the app without a real server."""
     return TestClient(app)
 
 

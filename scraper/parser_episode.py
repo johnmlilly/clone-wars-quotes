@@ -1,3 +1,5 @@
+"""Parse an episode page's wikitext into a quote dict."""
+
 import re
 from typing import Optional
 
@@ -47,5 +49,11 @@ def parse_episode(title: str, wikitext: str) -> Optional[dict]:
 
 
 if __name__ == "__main__":
-    for title in ["Ambush", "Lethal Trackdown", "The Phantom Apprentice", "Blue Shadow Virus (episode)"]:
-        print(parse_episode(title, fetch_wikitext(title)))
+    examples = [
+        "Ambush",
+        "Lethal Trackdown",
+        "The Phantom Apprentice",
+        "Blue Shadow Virus (episode)",
+    ]
+    for page in examples:
+        print(parse_episode(page, fetch_wikitext(page)))
