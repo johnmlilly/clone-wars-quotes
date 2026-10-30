@@ -39,7 +39,7 @@ def parse_episode(title: str, wikitext: str) -> Optional[dict]:
         return None
 
     return {
-        "title": title,
+        "title": re.sub(r" \(.*\)$", "", title),  # strip trailing "(episode)" from the title
         "season": SEASON_NUMBERS[season.group(1)],
         "episode": int(episode.group(1)),
         "quote": clean_markup(moral.group(1)),
@@ -47,5 +47,5 @@ def parse_episode(title: str, wikitext: str) -> Optional[dict]:
 
 
 if __name__ == "__main__":
-    for title in ["Ambush", "Lethal Trackdown", "The Phantom Apprentice"]:
+    for title in ["Ambush", "Lethal Trackdown", "The Phantom Apprentice", "Blue Shadow Virus (episode)"]:
         print(parse_episode(title, fetch_wikitext(title)))
