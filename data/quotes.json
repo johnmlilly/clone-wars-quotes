@@ -1,0 +1,877 @@
+[
+  {
+    "title": "Ambush",
+    "season": 1,
+    "episode": 1,
+    "quote": "Great leaders inspire greatness in others.",
+    "id": 1
+  },
+  {
+    "title": "Rising Malevolence",
+    "season": 1,
+    "episode": 2,
+    "quote": "Belief is not a matter of choice, but of conviction.",
+    "id": 2
+  },
+  {
+    "title": "Shadow of Malevolence",
+    "season": 1,
+    "episode": 3,
+    "quote": "Easy is the path to wisdom for those not blinded by ego.",
+    "id": 3
+  },
+  {
+    "title": "Destroy Malevolence",
+    "season": 1,
+    "episode": 4,
+    "quote": "A plan is only as good as those who see it through.",
+    "id": 4
+  },
+  {
+    "title": "Rookies (episode)",
+    "season": 1,
+    "episode": 5,
+    "quote": "The best confidence builder is experience.",
+    "id": 5
+  },
+  {
+    "title": "Downfall of a Droid",
+    "season": 1,
+    "episode": 6,
+    "quote": "Trust in your friends, and they'll have reason to trust in you.",
+    "id": 6
+  },
+  {
+    "title": "Duel of the Droids",
+    "season": 1,
+    "episode": 7,
+    "quote": "You hold onto friends by keeping your heart a little softer than your head.",
+    "id": 7
+  },
+  {
+    "title": "Bombad Jedi",
+    "season": 1,
+    "episode": 8,
+    "quote": "Heroes are made by the times.",
+    "id": 8
+  },
+  {
+    "title": "Cloak of Darkness",
+    "season": 1,
+    "episode": 9,
+    "quote": "Ignore your instincts at your peril.",
+    "id": 9
+  },
+  {
+    "title": "Lair of Grievous",
+    "season": 1,
+    "episode": 10,
+    "quote": "Most powerful is he who controls his own power.",
+    "id": 10
+  },
+  {
+    "title": "Dooku Captured",
+    "season": 1,
+    "episode": 11,
+    "quote": "The winding path to peace is always a worthy one, regardless of how many turns it takes.",
+    "id": 11
+  },
+  {
+    "title": "The Gungan General",
+    "season": 1,
+    "episode": 12,
+    "quote": "Fail with honor rather than succeed by fraud.",
+    "id": 12
+  },
+  {
+    "title": "Jedi Crash",
+    "season": 1,
+    "episode": 13,
+    "quote": "Greed and fear of loss are the roots that lead to the tree of evil.",
+    "id": 13
+  },
+  {
+    "title": "Defenders of Peace",
+    "season": 1,
+    "episode": 14,
+    "quote": "When surrounded by war, one must eventually choose a side.",
+    "id": 14
+  },
+  {
+    "title": "Trespass",
+    "season": 1,
+    "episode": 15,
+    "quote": "Arrogance diminishes wisdom.",
+    "id": 15
+  },
+  {
+    "title": "The Hidden Enemy",
+    "season": 1,
+    "episode": 16,
+    "quote": "Truth enlightens the mind, but won't always bring happiness to your heart.",
+    "id": 16
+  },
+  {
+    "title": "Blue Shadow Virus (episode)",
+    "season": 1,
+    "episode": 17,
+    "quote": "Fear is a disease; hope is its only cure.",
+    "id": 17
+  },
+  {
+    "title": "Mystery of a Thousand Moons",
+    "season": 1,
+    "episode": 18,
+    "quote": "A single chance is a galaxy of hope.",
+    "id": 18
+  },
+  {
+    "title": "Storm Over Ryloth",
+    "season": 1,
+    "episode": 19,
+    "quote": "It is a rough road that leads to the heights of greatness.",
+    "id": 19
+  },
+  {
+    "title": "Innocents of Ryloth",
+    "season": 1,
+    "episode": 20,
+    "quote": "The costs of war can never be truly accounted for.",
+    "id": 20
+  },
+  {
+    "title": "Liberty on Ryloth",
+    "season": 1,
+    "episode": 21,
+    "quote": "Compromise is a virtue to be cultivated, not a weakness to be despised.",
+    "id": 21
+  },
+  {
+    "title": "Hostage Crisis",
+    "season": 1,
+    "episode": 22,
+    "quote": "A secret shared is a trust formed.",
+    "id": 22
+  },
+  {
+    "title": "Holocron Heist",
+    "season": 2,
+    "episode": 1,
+    "quote": "A lesson learned is a lesson earned.",
+    "id": 23
+  },
+  {
+    "title": "Cargo of Doom",
+    "season": 2,
+    "episode": 2,
+    "quote": "Overconfidence is the most dangerous form of carelessness.",
+    "id": 24
+  },
+  {
+    "title": "Children of the Force",
+    "season": 2,
+    "episode": 3,
+    "quote": "The first step to correcting a mistake is patience.",
+    "id": 25
+  },
+  {
+    "title": "Senate Spy",
+    "season": 2,
+    "episode": 4,
+    "quote": "A true heart should never be doubted.",
+    "id": 26
+  },
+  {
+    "title": "Landing at Point Rain",
+    "season": 2,
+    "episode": 5,
+    "quote": "Believe in yourself or no one else will.",
+    "id": 27
+  },
+  {
+    "title": "Weapons Factory",
+    "season": 2,
+    "episode": 6,
+    "quote": "No gift is more precious than trust.",
+    "id": 28
+  },
+  {
+    "title": "Legacy of Terror",
+    "season": 2,
+    "episode": 7,
+    "quote": "Sometimes, accepting help is harder than offering it.",
+    "id": 29
+  },
+  {
+    "title": "Brain Invaders",
+    "season": 2,
+    "episode": 8,
+    "quote": "Attachment is not compassion.",
+    "id": 30
+  },
+  {
+    "title": "Grievous Intrigue",
+    "season": 2,
+    "episode": 9,
+    "quote": "For everything you gain, you lose something else.",
+    "id": 31
+  },
+  {
+    "title": "The Deserter",
+    "season": 2,
+    "episode": 10,
+    "quote": "It is the quest for honor that makes one honorable.",
+    "id": 32
+  },
+  {
+    "title": "Lightsaber Lost",
+    "season": 2,
+    "episode": 11,
+    "quote": "Easy isn't always simple.",
+    "id": 33
+  },
+  {
+    "title": "The Mandalore Plot",
+    "season": 2,
+    "episode": 12,
+    "quote": "If you ignore the past, you jeopardize your future.",
+    "id": 34
+  },
+  {
+    "title": "Voyage of Temptation",
+    "season": 2,
+    "episode": 13,
+    "quote": "Fear not for the future, weep not for the past.",
+    "id": 35
+  },
+  {
+    "title": "Duchess of Mandalore",
+    "season": 2,
+    "episode": 14,
+    "quote": "In war, truth is the first casualty.",
+    "id": 36
+  },
+  {
+    "title": "Senate Murders",
+    "season": 2,
+    "episode": 15,
+    "quote": "Searching for the truth is easy. Accepting the truth is hard.",
+    "id": 37
+  },
+  {
+    "title": "Cat and Mouse",
+    "season": 2,
+    "episode": 16,
+    "quote": "A wise leader knows when to follow.",
+    "id": 38
+  },
+  {
+    "title": "Bounty Hunters (episode)",
+    "season": 2,
+    "episode": 17,
+    "quote": "Courage makes heroes, but trust builds friendship.",
+    "id": 39
+  },
+  {
+    "title": "The Zillo Beast",
+    "season": 2,
+    "episode": 18,
+    "quote": "Choose what is right, not what is easy.",
+    "id": 40
+  },
+  {
+    "title": "The Zillo Beast Strikes Back",
+    "season": 2,
+    "episode": 19,
+    "quote": "The most dangerous beast is the beast within.",
+    "id": 41
+  },
+  {
+    "title": "Death Trap",
+    "season": 2,
+    "episode": 20,
+    "quote": "Who my father was matters less than my memory of him.",
+    "id": 42
+  },
+  {
+    "title": "R2 Come Home",
+    "season": 2,
+    "episode": 21,
+    "quote": "Adversity is a friendship's truest test.",
+    "id": 43
+  },
+  {
+    "title": "Lethal Trackdown",
+    "season": 2,
+    "episode": 22,
+    "quote": "Revenge is a confession of pain.",
+    "id": 44
+  },
+  {
+    "title": "Clone Cadets",
+    "season": 3,
+    "episode": 1,
+    "quote": "Brothers in arms are brothers for life.",
+    "id": 45
+  },
+  {
+    "title": "ARC Troopers (episode)",
+    "season": 3,
+    "episode": 2,
+    "quote": "Fighting a war tests a soldier's skills, defending his home tests a soldier's heart.",
+    "id": 46
+  },
+  {
+    "title": "Supply Lines",
+    "season": 3,
+    "episode": 3,
+    "quote": "Where there's a will, there's a way.",
+    "id": 47
+  },
+  {
+    "title": "Sphere of Influence",
+    "season": 3,
+    "episode": 4,
+    "quote": "A child stolen is a hope lost.",
+    "id": 48
+  },
+  {
+    "title": "Corruption (episode)",
+    "season": 3,
+    "episode": 5,
+    "quote": "The challenge of hope is to overcome corruption.",
+    "id": 49
+  },
+  {
+    "title": "The Academy",
+    "season": 3,
+    "episode": 6,
+    "quote": "Those who enforce the law must obey the law.",
+    "id": 50
+  },
+  {
+    "title": "Assassin (episode)",
+    "season": 3,
+    "episode": 7,
+    "quote": "The future has many paths &ndash; choose wisely.",
+    "id": 51
+  },
+  {
+    "title": "Evil Plans",
+    "season": 3,
+    "episode": 8,
+    "quote": "A failure in planning is a plan for failure.",
+    "id": 52
+  },
+  {
+    "title": "Hunt for Ziro",
+    "season": 3,
+    "episode": 9,
+    "quote": "Love comes in all shapes and sizes.",
+    "id": 53
+  },
+  {
+    "title": "Heroes on Both Sides",
+    "season": 3,
+    "episode": 10,
+    "quote": "Fear is a great motivator.",
+    "id": 54
+  },
+  {
+    "title": "Pursuit of Peace",
+    "season": 3,
+    "episode": 11,
+    "quote": "Truth can strike down the spectre of fear.",
+    "id": 55
+  },
+  {
+    "title": "Nightsisters (episode)",
+    "season": 3,
+    "episode": 12,
+    "quote": "The swiftest path to destruction is through vengeance.",
+    "id": 56
+  },
+  {
+    "title": "Monster",
+    "season": 3,
+    "episode": 13,
+    "quote": "Evil is not born, it is taught.",
+    "id": 57
+  },
+  {
+    "title": "Witches of the Mist",
+    "season": 3,
+    "episode": 14,
+    "quote": "The path to evil may bring great power, but not loyalty.",
+    "id": 58
+  },
+  {
+    "title": "Overlords",
+    "season": 3,
+    "episode": 15,
+    "quote": "Balance is found in the one who faces his guilt.",
+    "id": 59
+  },
+  {
+    "title": "Altar of Mortis (episode)",
+    "season": 3,
+    "episode": 16,
+    "quote": "He who surrenders hope, surrenders life.",
+    "id": 60
+  },
+  {
+    "title": "Ghosts of Mortis",
+    "season": 3,
+    "episode": 17,
+    "quote": "He who seeks to control fate shall never find peace.",
+    "id": 61
+  },
+  {
+    "title": "The Citadel (episode)",
+    "season": 3,
+    "episode": 18,
+    "quote": "Adaptation is the key to survival.",
+    "id": 62
+  },
+  {
+    "title": "Counterattack",
+    "season": 3,
+    "episode": 19,
+    "quote": "Anything that can go wrong will.",
+    "id": 63
+  },
+  {
+    "title": "Citadel Rescue",
+    "season": 3,
+    "episode": 20,
+    "quote": "Without honor, victory is hollow.",
+    "id": 64
+  },
+  {
+    "title": "Padawan Lost",
+    "season": 3,
+    "episode": 21,
+    "quote": "Without humility, courage is a dangerous game.",
+    "id": 65
+  },
+  {
+    "title": "Wookiee Hunt",
+    "season": 3,
+    "episode": 22,
+    "quote": "A great student is what the teacher hopes to be.",
+    "id": 66
+  },
+  {
+    "title": "Water War",
+    "season": 4,
+    "episode": 1,
+    "quote": "When destiny calls, the chosen have no choice.",
+    "id": 67
+  },
+  {
+    "title": "Gungan Attack",
+    "season": 4,
+    "episode": 2,
+    "quote": "Only through fire is a strong sword forged.",
+    "id": 68
+  },
+  {
+    "title": "Prisoners",
+    "season": 4,
+    "episode": 3,
+    "quote": "Crowns are inherited, kingdoms are earned.",
+    "id": 69
+  },
+  {
+    "title": "Shadow Warrior",
+    "season": 4,
+    "episode": 4,
+    "quote": "Who a person truly is cannot be seen with the eye.",
+    "id": 70
+  },
+  {
+    "title": "Mercy Mission (episode)",
+    "season": 4,
+    "episode": 5,
+    "quote": "Understanding is honoring the truth beneath the surface.",
+    "id": 71
+  },
+  {
+    "title": "Nomad Droids",
+    "season": 4,
+    "episode": 6,
+    "quote": "Who's the more foolish, the fool or the fool who follows him?",
+    "id": 72
+  },
+  {
+    "title": "Darkness on Umbara",
+    "season": 4,
+    "episode": 7,
+    "quote": "The first step toward loyalty is trust.",
+    "id": 73
+  },
+  {
+    "title": "The General (episode)",
+    "season": 4,
+    "episode": 8,
+    "quote": "The path of ignorance is guided by fear.",
+    "id": 74
+  },
+  {
+    "title": "Plan of Dissent",
+    "season": 4,
+    "episode": 9,
+    "quote": "The wise man leads, the strong man follows.",
+    "id": 75
+  },
+  {
+    "title": "Carnage of Krell",
+    "season": 4,
+    "episode": 10,
+    "quote": "Our actions define our legacy.",
+    "id": 76
+  },
+  {
+    "title": "Kidnapped",
+    "season": 4,
+    "episode": 11,
+    "quote": "Where we are going always reflects where we came from.",
+    "id": 77
+  },
+  {
+    "title": "Slaves of the Republic",
+    "season": 4,
+    "episode": 12,
+    "quote": "Those who enslave others inevitably become slaves themselves.",
+    "id": 78
+  },
+  {
+    "title": "Escape from Kadavo",
+    "season": 4,
+    "episode": 13,
+    "quote": "Great hope can come from small sacrifices.",
+    "id": 79
+  },
+  {
+    "title": "A Friend in Need",
+    "season": 4,
+    "episode": 14,
+    "quote": "Friendship shows us who we really are.",
+    "id": 80
+  },
+  {
+    "title": "Deception",
+    "season": 4,
+    "episode": 15,
+    "quote": "All warfare is based on deception.",
+    "id": 81
+  },
+  {
+    "title": "Friends and Enemies",
+    "season": 4,
+    "episode": 16,
+    "quote": "Keep your friends close, but keep your enemies closer.",
+    "id": 82
+  },
+  {
+    "title": "The Box",
+    "season": 4,
+    "episode": 17,
+    "quote": "The strong survive, the noble overcome.",
+    "id": 83
+  },
+  {
+    "title": "Crisis on Naboo",
+    "season": 4,
+    "episode": 18,
+    "quote": "Trust is the greatest of gifts, but it must be earned.",
+    "id": 84
+  },
+  {
+    "title": "Massacre",
+    "season": 4,
+    "episode": 19,
+    "quote": "One must let go of the past to hold onto the future.",
+    "id": 85
+  },
+  {
+    "title": "Bounty (episode)",
+    "season": 4,
+    "episode": 20,
+    "quote": "Who we are never changes, who we think we are does.",
+    "id": 86
+  },
+  {
+    "title": "Brothers (episode)",
+    "season": 4,
+    "episode": 21,
+    "quote": "A fallen enemy may rise again, but the reconciled one is truly vanquished.",
+    "id": 87
+  },
+  {
+    "title": "Revenge (episode)",
+    "season": 4,
+    "episode": 22,
+    "quote": "The enemy of my enemy is my friend.",
+    "id": 88
+  },
+  {
+    "title": "Revival (episode)",
+    "season": 5,
+    "episode": 1,
+    "quote": "Strength of character can defeat strength in numbers.",
+    "id": 89
+  },
+  {
+    "title": "A War on Two Fronts",
+    "season": 5,
+    "episode": 2,
+    "quote": "Fear is a malleable weapon.",
+    "id": 90
+  },
+  {
+    "title": "Front Runners",
+    "season": 5,
+    "episode": 3,
+    "quote": "To seek something is to believe in its possibility.",
+    "id": 91
+  },
+  {
+    "title": "The Soft War",
+    "season": 5,
+    "episode": 4,
+    "quote": "Struggles often begin and end with the truth.",
+    "id": 92
+  },
+  {
+    "title": "Tipping Points",
+    "season": 5,
+    "episode": 5,
+    "quote": "Disobedience is a demand for change.",
+    "id": 93
+  },
+  {
+    "title": "The Gathering (episode)",
+    "season": 5,
+    "episode": 6,
+    "quote": "He who faces himself, finds himself.",
+    "id": 94
+  },
+  {
+    "title": "A Test of Strength",
+    "season": 5,
+    "episode": 7,
+    "quote": "The young are often underestimated.",
+    "id": 95
+  },
+  {
+    "title": "Bound for Rescue",
+    "season": 5,
+    "episode": 8,
+    "quote": "When we rescue others, we rescue ourselves.",
+    "id": 96
+  },
+  {
+    "title": "A Necessary Bond",
+    "season": 5,
+    "episode": 9,
+    "quote": "Choose your enemies wisely, as they may be your last hope.",
+    "id": 97
+  },
+  {
+    "title": "Secret Weapons",
+    "season": 5,
+    "episode": 10,
+    "quote": "Humility is the only defense against humiliation.",
+    "id": 98
+  },
+  {
+    "title": "A Sunny Day in the Void",
+    "season": 5,
+    "episode": 11,
+    "quote": "When all seems hopeless, a true hero gives hope.",
+    "id": 99
+  },
+  {
+    "title": "Missing in Action",
+    "season": 5,
+    "episode": 12,
+    "quote": "A soldier's most powerful weapon is courage.",
+    "id": 100
+  },
+  {
+    "title": "Point of No Return (The Clone Wars)",
+    "season": 5,
+    "episode": 13,
+    "quote": "You must trust in others or success is impossible.",
+    "id": 101
+  },
+  {
+    "title": "Eminence (episode)",
+    "season": 5,
+    "episode": 14,
+    "quote": "One vision can have many interpretations.",
+    "id": 102
+  },
+  {
+    "title": "Shades of Reason",
+    "season": 5,
+    "episode": 15,
+    "quote": "Alliances can stall true intentions.",
+    "id": 103
+  },
+  {
+    "title": "The Lawless",
+    "season": 5,
+    "episode": 16,
+    "quote": "Morality separates heroes from villains.",
+    "id": 104
+  },
+  {
+    "title": "Sabotage (episode)",
+    "season": 5,
+    "episode": 17,
+    "quote": "Sometimes even the smallest doubt can shake the greatest belief.",
+    "id": 105
+  },
+  {
+    "title": "The Jedi Who Knew Too Much",
+    "season": 5,
+    "episode": 18,
+    "quote": "Courage begins by trusting oneself.",
+    "id": 106
+  },
+  {
+    "title": "To Catch a Jedi",
+    "season": 5,
+    "episode": 19,
+    "quote": "Never become desperate enough to trust the untrustworthy.",
+    "id": 107
+  },
+  {
+    "title": "The Wrong Jedi",
+    "season": 5,
+    "episode": 20,
+    "quote": "Never give up hope, no matter how dark things seem.",
+    "id": 108
+  },
+  {
+    "title": "The Unknown",
+    "season": 6,
+    "episode": 1,
+    "quote": "The truth about yourself is always the hardest to accept.",
+    "id": 109
+  },
+  {
+    "title": "Conspiracy",
+    "season": 6,
+    "episode": 2,
+    "quote": "The wise benefit from a second opinion.",
+    "id": 110
+  },
+  {
+    "title": "Fugitive",
+    "season": 6,
+    "episode": 3,
+    "quote": "When in doubt, go to the source.",
+    "id": 111
+  },
+  {
+    "title": "Orders (episode)",
+    "season": 6,
+    "episode": 4,
+    "quote": "The popular belief isn't always the correct one.",
+    "id": 112
+  },
+  {
+    "title": "An Old Friend",
+    "season": 6,
+    "episode": 5,
+    "quote": "To love, is to trust. To trust is to believe.",
+    "id": 113
+  },
+  {
+    "title": "The Rise of Clovis",
+    "season": 6,
+    "episode": 6,
+    "quote": "Jealousy is the path to chaos.",
+    "id": 114
+  },
+  {
+    "title": "Crisis at the Heart",
+    "season": 6,
+    "episode": 7,
+    "quote": "Deceit is the weapon of greed.",
+    "id": 115
+  },
+  {
+    "title": "The Disappeared, Part I",
+    "season": 6,
+    "episode": 8,
+    "quote": "Without darkness there cannot be light.",
+    "id": 116
+  },
+  {
+    "title": "The Disappeared, Part II",
+    "season": 6,
+    "episode": 9,
+    "quote": "Wisdom is born in fools as well as wise men.",
+    "id": 117
+  },
+  {
+    "title": "The Lost One",
+    "season": 6,
+    "episode": 10,
+    "quote": "What is lost is often found.",
+    "id": 118
+  },
+  {
+    "title": "Voices",
+    "season": 6,
+    "episode": 11,
+    "quote": "Madness can sometimes be the path to truth.",
+    "id": 119
+  },
+  {
+    "title": "Destiny (The Clone Wars)",
+    "season": 6,
+    "episode": 12,
+    "quote": "Death is just the beginning.",
+    "id": 120
+  },
+  {
+    "title": "Sacrifice (episode)",
+    "season": 6,
+    "episode": 13,
+    "quote": "Facing all that you fear will free you from yourself.",
+    "id": 121
+  },
+  {
+    "title": "Gone with a Trace",
+    "season": 7,
+    "episode": 5,
+    "quote": "If there is no path before you, create your own.",
+    "id": 122
+  },
+  {
+    "title": "Deal No Deal",
+    "season": 7,
+    "episode": 6,
+    "quote": "Mistakes are valuable lessons often learned too late.",
+    "id": 123
+  },
+  {
+    "title": "Dangerous Debt",
+    "season": 7,
+    "episode": 7,
+    "quote": "Who you were does not have to define who you are.",
+    "id": 124
+  },
+  {
+    "title": "Together Again",
+    "season": 7,
+    "episode": 8,
+    "quote": "You can change who you are, but you cannot run from yourself.",
+    "id": 125
+  }
+]
