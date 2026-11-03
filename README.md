@@ -1,9 +1,9 @@
 # Clone Wars Quotes API
 
+[![Test](https://github.com/johnmlilly/clone-wars-quotes/actions/workflows/test.yml/badge.svg)](https://github.com/johnmlilly/clone-wars-quotes/actions/workflows/test.yml)
+[![Pylint](https://github.com/johnmlilly/clone-wars-quotes/actions/workflows/pylint.yml/badge.svg)](https://github.com/johnmlilly/clone-wars-quotes/actions/workflows/pylint.yml)
 ![Python](https://img.shields.io/badge/Python-3.15-3776AB?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.162-009688?logo=fastapi&logoColor=white)
-![Pydantic](https://img.shields.io/badge/Pydantic-2-E92063?logo=pydantic&logoColor=white)
-![pytest](https://img.shields.io/badge/tested_with-pytest-0A9EDC?logo=pytest&logoColor=white)
 ![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-F38020?logo=cloudflare&logoColor=white)
 
 ## Overview
