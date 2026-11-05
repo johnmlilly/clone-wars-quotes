@@ -2,6 +2,7 @@
 
 [![Test](https://github.com/johnmlilly/clone-wars-quotes/actions/workflows/test.yml/badge.svg)](https://github.com/johnmlilly/clone-wars-quotes/actions/workflows/test.yml)
 [![Pylint](https://github.com/johnmlilly/clone-wars-quotes/actions/workflows/pylint.yml/badge.svg)](https://github.com/johnmlilly/clone-wars-quotes/actions/workflows/pylint.yml)
+[![Deploy](https://github.com/johnmlilly/clone-wars-quotes/actions/workflows/deploy.yml/badge.svg)](https://github.com/johnmlilly/clone-wars-quotes/actions/workflows/deploy.yml)
 ![Python](https://img.shields.io/badge/Python-3.15-3776AB?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.162-009688?logo=fastapi&logoColor=white)
 ![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-F38020?logo=cloudflare&logoColor=white)
