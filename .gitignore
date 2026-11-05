@@ -1,3 +1,6 @@
 .venv/
 __pycache__/
 .pytest_cache/
+python_modules/
+pylock.toml
+.wrangler/

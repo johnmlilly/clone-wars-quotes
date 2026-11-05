@@ -11,11 +11,13 @@
 This project is an API for the quotes from Star Wars: The Clone Wars animated series. It fetches the opening moral of every episode from Wookieepedia, stores them in a JSON file, and exposes several endpoints for consumption.
 
 - 125 morals across Seasons 1–7
+- Live at https://clone-wars-quotes.jm2lilly.workers.dev ([docs](https://clone-wars-quotes.jm2lilly.workers.dev/docs))
 - Interactive docs at `/docs`
 
 ## Tech Stack
 
 - **Python** – language
+- **uv** – packages and virtualenv
 - **FastAPI** – web framework
 - **Pydantic** – data models and validation
 - **Requests** – scraping the Wookieepedia (MediaWiki) API
@@ -24,34 +26,46 @@ This project is an API for the quotes from Star Wars: The Clone Wars animated se
 
 ## Setup
 
+Requires [uv](https://docs.astral.sh/uv/).
+
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+uv sync
 ```
 
 ## Usage
 
 Run all commands from the project root.
 
-**Scrape the quotes** (writes `data/quotes.json`):
+**Scrape the quotes** (writes `src/data/quotes.json`):
 
 ```bash
-python scraper/scraper_quotes.py
+uv run python scraper/scraper_quotes.py
 ```
 
-**Run the API:**
+**Run the API locally:**
 
 ```bash
-uvicorn app.main:app --reload
+uv run uvicorn app.main:app --app-dir src --reload
 ```
 
 Then open http://127.0.0.1:8000/docs.
 
+**Run on the Workers runtime locally** (http://localhost:8787):
+
+```bash
+uv run pywrangler dev
+```
+
+**Deploy to Cloudflare Workers:**
+
+```bash
+uv run pywrangler deploy
+```
+
 **Run the tests:**
 
 ```bash
-python -m pytest
+uv run python -m pytest
 ```
 
 ## Endpoints

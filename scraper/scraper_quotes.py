@@ -12,7 +12,7 @@ from parser_episode import parse_episode
 CATEGORY = "Category:Star_Wars:_The_Clone_Wars_episodes"
 
 # Path(__file__) is this file. .parent is scraper/, .parent.parent is the project root.
-OUTPUT_FILE = Path(__file__).parent.parent / "data" / "quotes.json"
+OUTPUT_FILE = Path(__file__).parent.parent / "src" / "data" / "quotes.json"
 
 
 def fetch_episode_titles() -> list[str]:

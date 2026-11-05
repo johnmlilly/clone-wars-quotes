@@ -1,0 +1,8 @@
+{
+  "name": "clone-wars-quotes",
+  "main": "src/worker.py",
+  "compatibility_date": "2026-10-30",
+  "compatibility_flags": ["python_workers"],
+  // Bundle the quotes file so Path(...).read_text() can find it
+  "rules": [{ "type": "Data", "globs": ["data/*.json"], "fallthrough": true }]
+}
