@@ -1,7 +1,7 @@
-# Plan: Lesson 7 — Deploy to Cloudflare Workers
+# Plan: Lesson 7 — Deploy to Cloudflare Workers ✅ (done 2026-11-04)
 
 ## Context
-A learning project: a FastAPI API serving the opening morals of *Star Wars: The Clone Wars* episodes, built as step-by-step Python lessons. Lessons 1–6 are done. Next is deploying to **Cloudflare Workers (Python)**. **Keep the data in a JSON file** (no D1/KV).
+A learning project: a FastAPI API serving the opening morals of *Star Wars: The Clone Wars* episodes, built as step-by-step Python lessons. Lessons 1–7 are done: the API is live on **Cloudflare Workers (Python)** at https://clone-wars-quotes.jm2lilly.workers.dev. **Keep the data in a JSON file** (no D1/KV).
 
 ### How to teach (user preferences)
 - User knows some programming but is new to Python. Teach one step at a time, and pause after each step for questions / "next".
@@ -13,15 +13,16 @@ A learning project: a FastAPI API serving the opening morals of *Star Wars: The 
 ## Current state
 - Repo: `~/Repos/clone-wars-quotes` (remote `github.com/johnmlilly/clone-wars-quotes`, branch `main`)
 - Python 3.15 via uv (`pyproject.toml` + `uv.lock`, `requirements.txt` removed); Node 24, uv 0.13.5, wrangler 4.156
-- CI: `.github/workflows/test.yml` (pytest) and `pylint.yml` (pylint, 10/10), both using `astral-sh/setup-uv` pinned by SHA. Badges in the README.
-- Steps 1 and 2 below are done or in progress; step 2 is tested in the scratchpad and handed to the user.
-- Layout after step 2:
+- CI: `.github/workflows/test.yml` (pytest), `pylint.yml` (pylint, 10/10) and `deploy.yml` (push to main → test + pylint → `pywrangler deploy` → curl smoke test). All use `astral-sh/setup-uv` pinned by SHA. Badges in the README.
+- All steps below are done. Deploys need repo secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
+- Layout:
   ```
   src/worker.py           # Workers entry point (Default = asgi.entrypoint(app))
-  src/app/                # models.py, data.py, main.py (FastAPI, 6 GET routes)
+  src/app/                # models.py, data.py, main.py (FastAPI: `/` HTML home page, `/api` info, 5 quote routes)
+  src/app/static/index.html  # Star Wars themed home page (canvas starfield, hyperspace jump, random quote)
   src/data/quotes.json    # 125 quotes: {id, season, episode, title, quote}
   scraper/                # explore.py, parser_episode.py, scraper_quotes.py (writes src/data/quotes.json)
-  tests/                  # test_api.py, test_parser.py, 16 passing
+  tests/                  # test_api.py, test_parser.py, 17 passing
   wrangler.jsonc, pyproject.toml, uv.lock
   ```
 
@@ -38,7 +39,7 @@ A learning project: a FastAPI API serving the opening morals of *Star Wars: The 
 - Added `test.yml` (same pattern, runs `uv run pytest`), modeled on johnsblog `verify.yml` and francisroylilly `test.yml`.
 - Lint: module/function docstrings, `no-docstring-rgx = "^(_|test_)"`, `@pytest.fixture(name="client") def fixture_client()`, narrowed `except` to `(requests.RequestException, KeyError)`, replaced the `sys.path` hack in `test_parser.py` with pytest `pythonpath` + pylint `init-hook`.
 
-### 2. Workers entry point, config and local run (in progress)
+### 2. Workers entry point, config and local run ✅
 **Findings (tested with `pywrangler dev`):**
 - Wrangler uploads every `.py` under the entry file's directory. A root-level `worker.py` uploaded all of `.venv` and failed. Custom `PythonModule` rules are rejected (`rules` types are only ESModule, CommonJS, CompiledWasm, Text, Data). So the worker source goes in **`src/`**.
 - Without a rule, `quotes.json` isn't bundled: `FileNotFoundError: /session/metadata/data/quotes.json`. A `Data` rule fixes it, and `Path(__file__)` reads work.
@@ -82,14 +83,24 @@ A learning project: a FastAPI API serving the opening morals of *Star Wars: The 
    `curl localhost:8787/quotes/1` → `{"id":1,"season":1,"episode":1,"title":"Ambush","quote":"Great leaders inspire greatness in others."}`
 - Local uvicorn is now `uv run uvicorn app.main:app --app-dir src --reload`.
 
-### 3. Deploy: `uv run pywrangler deploy`
+### 3. Deploy: `uv run pywrangler deploy` ✅
 - First run opens a browser for Cloudflare login (free account).
 - Hit `https://clone-wars-quotes.<subdomain>.workers.dev/quotes/random` and `/docs`.
 - Add the live URL to the README.
 
-### 4. Wrap-up
-- Update README and AGENTS.md for uv, the `src/` layout, the new uvicorn command and the deploy commands.
-- Optional: GitHub Action to deploy on push (teaches secrets: `CLOUDFLARE_API_TOKEN`).
+### 4. Wrap-up ✅
+- README and AGENTS.md updated for uv, the `src/` layout, the new commands and the live URL.
+- `deploy.yml`: deploy on push to main after tests pass (the user knows Actions, so no lesson needed).
+
+### 5. Home page ✅
+- `/` serves `src/app/static/index.html` via `HTMLResponse` (read once at import, so it's in the memory snapshot). The old JSON root moved to `/api`.
+- `wrangler.jsonc` `Data` rule globs: `data/*.json`, `app/static/*.html`.
+- Design: johnsblog layout bones with a Star Wars theme (News Cycle font, crawl yellow, nebula + canvas starfield, "Jump to hyperspace" button). The user asked for less terminal styling, no hero animation and minimal endpoint cards.
+
+## Ideas / skipped
+- **Rate limiting (skipped for now):** free plan = 100k requests/day, then Error 1027 until midnight UTC (no charges). Option: a `ratelimits` binding in `wrangler.jsonc` plus a FastAPI middleware reading `request.scope["env"]`, keyed on `cf-connecting-ip`. Untested: whether `limit()` needs `pyodide.ffi.to_js` for its dict argument. Rate-limited requests still count toward the 100k.
+- Self-host the fonts (now loaded from Google Fonts).
+- Add a GitHub repo description and website link.
 
 ## Docs
 - https://developers.cloudflare.com/workers/languages/python/
@@ -97,7 +108,7 @@ A learning project: a FastAPI API serving the opening morals of *Star Wars: The 
 - Examples: https://github.com/cloudflare/python-workers-examples (`fastapi/`)
 
 ## Verification
-- `uv run pytest`: 16 pass; `uv run pylint $(git ls-files '*.py')`: 10.00/10
+- `uv run pytest`: 17 pass; `uv run pylint $(git ls-files '*.py')`: 10.00/10
 - `uv run uvicorn app.main:app --app-dir src --reload` still works locally
 - `uv run pywrangler dev`: all routes return correct JSON on :8787
 - The live workers.dev URL returns quotes and `/docs` loads

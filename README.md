@@ -72,7 +72,8 @@ uv run python -m pytest
 
 | Method | Path | Description |
 |---|---|---|
-| GET | `/` | API info and quote count |
+| GET | `/` | Home page (HTML) with a random quote |
+| GET | `/api` | API info and quote count |
 | GET | `/quotes` | All quotes. Optional `?season=` and `?search=` filters |
 | GET | `/quotes/random` | A random quote |
 | GET | `/quotes/{id}` | One quote by id |
