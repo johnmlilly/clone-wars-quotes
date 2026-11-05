@@ -12,8 +12,15 @@ def fixture_client():
     return TestClient(app)
 
 
-def test_root(client):
+def test_home_page_is_html(client):
     response = client.get("/")
+    assert response.status_code == 200
+    assert response.headers["content-type"].startswith("text/html")
+    assert "Clone Wars Quotes" in response.text
+
+
+def test_api_info(client):
+    response = client.get("/api")
     assert response.status_code == 200
     assert response.json()["quote_count"] == 125
 

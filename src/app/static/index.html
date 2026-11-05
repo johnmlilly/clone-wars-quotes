@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clone Wars Quotes API</title>
+  <meta name="description" content="A free JSON API serving the opening moral of every Star Wars: The Clone Wars episode.">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><circle cx='9' cy='10' r='1.2' fill='%23fff'/><circle cx='24' cy='7' r='0.9' fill='%23fff'/><circle cx='22' cy='25' r='1' fill='%23fff'/><rect x='6' y='15' width='20' height='3' rx='1.5' fill='%234bd5ee'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=News+Cycle:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+  <style>
+    :root {
+      color-scheme: dark;
+      --space: #02030a;
+      --text: #e8eaf2;
+      --muted: #9aa3b8;
+      --yellow: #ffe81f;        /* opening-crawl yellow */
+      --saber-blue: #4bd5ee;
+      --saber-green: #5cff8a;
+      --saber-red: #ff4b4b;
+      --panel: rgb(10 14 30 / 0.6);
+      --edge: rgb(75 213 238 / 0.25);
+      --font: "News Cycle", "Franklin Gothic Medium", "Arial Narrow", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+      --page-width: 960px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { background: var(--space); }
+
+    body {
+      font-family: var(--font);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Nebula glow behind the stars */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(ellipse 60% 45% at 85% 10%, rgb(88 40 160 / 0.28), transparent 70%),
+        radial-gradient(ellipse 50% 40% at 10% 85%, rgb(20 90 160 / 0.25), transparent 70%),
+        radial-gradient(ellipse 35% 30% at 55% 55%, rgb(160 40 80 / 0.10), transparent 70%),
+        var(--space);
+    }
+
+    #stars {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      display: block;
+    }
+
+    a { color: var(--saber-blue); text-decoration: none; }
+    a:hover { color: #fff; text-shadow: 0 0 8px var(--saber-blue); }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--yellow);
+      outline-offset: 3px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--page-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* Header */
+    .site-header .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem 1.5rem;
+      padding-block: 1.5rem;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      font-size: 0.95rem;
+    }
+
+    .brand:hover { color: var(--yellow); text-shadow: 0 0 10px rgb(255 232 31 / 0.6); }
+
+    .main-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.75rem;
+      list-style: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .main-nav a { color: var(--muted); }
+    .main-nav a:hover { color: var(--text); }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding-block: 4rem 2rem;
+    }
+
+    .intro {
+      color: var(--saber-blue);
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero h1 {
+      font-weight: 700;
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: transparent;
+      -webkit-text-stroke: 2px var(--yellow);
+      text-shadow: 0 0 30px rgb(255 232 31 / 0.25);
+      font-size: clamp(2.6rem, 9vw, 5.5rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span { display: block; }
+
+    .hero h1 .sub {
+      font-size: 0.42em;
+      letter-spacing: 0.35em;
+      -webkit-text-stroke: 0;
+      color: var(--yellow);
+      margin-top: 0.4em;
+    }
+
+    .lede {
+      max-width: 54ch;
+      margin: 0 auto 3rem;
+      color: var(--muted);
+    }
+
+    .lede strong { color: var(--yellow); }
+
+    /* Holographic quote panel */
+    .holo {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2.75rem 2rem 2rem;
+      border: 1px solid var(--edge);
+      border-radius: 18px;
+      background:
+        repeating-linear-gradient(0deg, rgb(75 213 238 / 0.035) 0 1px, transparent 1px 3px),
+        linear-gradient(180deg, rgb(75 213 238 / 0.08), rgb(10 14 30 / 0.55));
+      box-shadow:
+        0 0 40px rgb(75 213 238 / 0.12),
+        inset 0 0 40px rgb(75 213 238 / 0.06);
+      backdrop-filter: blur(3px);
+    }
+
+    /* Lightsaber blade across the top of the panel */
+    .holo::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: 12%;
+      right: 12%;
+      height: 3px;
+      border-radius: 3px;
+      background: #fff;
+      box-shadow: 0 0 6px 2px var(--saber-blue), 0 0 18px 4px var(--saber-blue);
+    }
+
+    .holo-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--saber-blue);
+      margin-bottom: 1.25rem;
+    }
+
+    .quote-text {
+      font-size: clamp(1.5rem, 4vw, 2.3rem);
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--yellow);
+      text-wrap: balance;
+      min-height: 2.6em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.35s, transform 0.35s, filter 0.35s;
+    }
+
+    .quote-text.jumping {
+      opacity: 0;
+      transform: scale(0.85);
+      filter: blur(4px);
+    }
+
+    .quote-meta {
+      margin: 1rem 0 1.75rem;
+      color: var(--muted);
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+    }
+
+    .quote-meta .ep {
+      color: var(--saber-blue);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    /* Saber-hilt buttons: dark hilt, glowing edge */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5ch;
+      padding: 0.65rem 1.4rem;
+      border-radius: 999px;
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      color: var(--text);
+      background: rgb(255 255 255 / 0.04);
+      border: 1px solid rgb(255 255 255 / 0.18);
+      transition: box-shadow 0.25s, border-color 0.25s, color 0.25s, background 0.25s;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      color: #fff;
+      text-shadow: none;
+      border-color: var(--saber-blue);
+      box-shadow: 0 0 14px rgb(75 213 238 / 0.55), inset 0 0 10px rgb(75 213 238 / 0.2);
+    }
+
+    .btn-primary {
+      color: #111;
+      background: var(--yellow);
+      border-color: var(--yellow);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      color: #111;
+      background: #fff36b;
+      border-color: #fff36b;
+      box-shadow: 0 0 22px rgb(255 232 31 / 0.6);
+    }
+
+    .btn:disabled { opacity: 0.6; cursor: progress; }
+
+    /* Sections */
+    section.band { padding-top: 5rem; }
+
+    .section-title {
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    /* Endpoint cards */
+    .endpoints {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1rem;
+      list-style: none;
+    }
+
+    .endpoints a {
+      display: block;
+      height: 100%;
+      padding: 1.1rem 1.25rem;
+      border-radius: 12px;
+      background: rgb(10 14 30 / 0.5);
+      border: 1px solid rgb(255 255 255 / 0.08);
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .endpoints a:hover {
+      text-shadow: none;
+      border-color: rgb(255 255 255 / 0.25);
+      background: rgb(10 14 30 / 0.75);
+    }
+
+    .endpoints code {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: #fff;
+      overflow-wrap: anywhere;
+      margin-bottom: 0.3rem;
+    }
+
+    .endpoints .method {
+      color: var(--muted);
+      margin-right: 0.6ch;
+    }
+
+    .endpoints .desc {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Usage */
+    .usage {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    pre {
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.75rem;
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid rgb(255 255 255 / 0.08);
+      background: rgb(0 0 0 / 0.55);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      line-height: 1.7;
+    }
+
+    pre .c { color: var(--muted); font-style: italic; }
+    pre .k { color: var(--saber-blue); }
+    pre .s { color: var(--yellow); }
+
+    /* Footer */
+    .site-footer {
+      margin-top: 6rem;
+      padding-block: 2rem 2.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+      border-top: 1px solid rgb(255 255 255 / 0.06);
+    }
+
+    .site-footer p + p { margin-top: 0.3rem; }
+
+    .may-the-force {
+      margin-top: 1rem !important;
+      color: var(--yellow);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 600px) {
+      .main-nav { display: none; }
+      .holo { padding: 2.25rem 1.25rem 1.5rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .quote-text { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="brand">Clone Wars Quotes</a>
+      <nav class="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="#endpoints">Endpoints</a></li>
+          <li><a href="#usage">Usage</a></li>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="https://github.com/johnmlilly/clone-wars-quotes">GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <p class="intro">A long time ago in a galaxy far, far away....</p>
+        <h1><span>Clone Wars</span><span class="sub">Quotes API</span></h1>
+        <p class="lede">
+          The opening moral of every episode of <em>Star Wars: The Clone Wars</em>,
+          served as JSON. <strong id="quote-count">125</strong> morals across seven seasons.
+        </p>
+
+        <div class="holo" aria-live="polite">
+          <p class="holo-label">Incoming transmission</p>
+          <p id="quote-text" class="quote-text">Great leaders inspire greatness in others.</p>
+          <p class="quote-meta">
+            <span id="quote-episode" class="ep">S1 · E1</span>
+            &nbsp;·&nbsp; <span id="quote-title">Ambush</span>
+          </p>
+          <div class="actions">
+            <button id="new-quote" class="btn btn-primary" type="button">Jump to hyperspace</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="endpoints" class="band">
+      <div class="container">
+        <h2 class="section-title">Endpoints</h2>
+        <p class="section-sub">Every route is a GET. Click one to try it.</p>
+        <ul class="endpoints">
+          <li><a href="/quotes"><code><span class="method">GET</span>/quotes</code><span class="desc">All quotes, with optional <code style="display:inline">?season=</code> and <code style="display:inline">?search=</code> filters</span></a></li>
+          <li><a href="/quotes/random"><code><span class="method">GET</span>/quotes/random</code><span class="desc">One random quote</span></a></li>
+          <li><a href="/quotes/1"><code><span class="method">GET</span>/quotes/{id}</code><span class="desc">One quote by id (1–125)</span></a></li>
+          <li><a href="/seasons/1"><code><span class="method">GET</span>/seasons/{season}</code><span class="desc">Every moral in a season (1–7)</span></a></li>
+          <li><a href="/seasons/2/episodes/22"><code><span class="method">GET</span>/seasons/{s}/episodes/{e}</code><span class="desc">The moral for one episode</span></a></li>
+          <li><a href="/quotes?season=2&amp;search=fear"><code><span class="method">GET</span>/quotes?search=fear</code><span class="desc">Search the morals for a word</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="usage" class="band">
+      <div class="container usage">
+        <h2 class="section-title">Usage</h2>
+        <p class="section-sub">No key, no sign-up. Just ask.</p>
+<pre><code><span class="c"># shell</span>
+curl <span id="base-url" class="s">https://clone-wars-quotes.jm2lilly.workers.dev</span>/quotes/random
+
+<span class="c">// JavaScript</span>
+<span class="k">const</span> res = <span class="k">await</span> fetch(<span class="s">"/quotes/random"</span>);
+<span class="k">const</span> { quote, season, episode, title } = <span class="k">await</span> res.json();</code></pre>
+        <div class="actions">
+          <a class="btn btn-primary" href="/docs">Swagger docs</a>
+          <a class="btn" href="/redoc">ReDoc</a>
+          <a class="btn" href="/openapi.json">OpenAPI JSON</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Quotes from <a href="https://starwars.fandom.com">Wookieepedia</a>, licensed <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA</a>.</p>
+      <p>Star Wars is a trademark of Lucasfilm Ltd. Unofficial fan project.</p>
+      <p class="may-the-force">May the Force be with you</p>
+    </div>
+  </footer>
+
+  <script>
+    // ---------- Starfield (canvas) ----------
+    // Stars live in 3D: x/y spread around the center, z = distance.
+    // Each frame z shrinks, and we project x/z, y/z onto the screen,
+    // so stars drift outward and grow as they "approach".
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const STAR_COUNT = 450;
+    const CRUISE = 0.0006;
+    const WARP = 0.03;
+    let speed = CRUISE;
+    let targetSpeed = CRUISE;
+    let stars = [];
+    let w = 0;
+    let h = 0;
+
+    function newStar(z = Math.random()) {
+      return { x: (Math.random() - 0.5) * 2, y: (Math.random() - 0.5) * 2, z, pz: z };
+    }
+
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function frame() {
+      speed += (targetSpeed - speed) * 0.06;
+      const cx = w / 2;
+      const cy = h / 2;
+      const scale = Math.max(w, h) * 0.5;
+      // At warp, a translucent fill leaves streak trails. At cruise, clear
+      // fully so the nebula behind the canvas shows through.
+      if (speed > CRUISE * 3) {
+        ctx.fillStyle = "rgba(2,3,10,0.35)";
+        ctx.fillRect(0, 0, w, h);
+      } else {
+        ctx.clearRect(0, 0, w, h);
+      }
+      for (const s of stars) {
+        s.pz = s.z;
+        s.z -= speed;
+        if (s.z <= 0.02) {
+          Object.assign(s, newStar(1));
+          continue;
+        }
+        const x = cx + (s.x / s.z) * scale;
+        const y = cy + (s.y / s.z) * scale;
+        if (x < 0 || x > w || y < 0 || y > h) {
+          Object.assign(s, newStar(1));
+          continue;
+        }
+        const px = cx + (s.x / s.pz) * scale;
+        const py = cy + (s.y / s.pz) * scale;
+        const brightness = Math.min(1, (1 - s.z) * 1.4);
+        const size = Math.max(0.4, (1 - s.z) * 2.2);
+        ctx.strokeStyle = `rgba(${200 + 55 * brightness}, ${220 + 35 * brightness}, 255, ${brightness})`;
+        ctx.lineWidth = size;
+        ctx.beginPath();
+        ctx.moveTo(px, py);
+        ctx.lineTo(x + 0.1, y + 0.1);
+        ctx.stroke();
+      }
+      requestAnimationFrame(frame);
+    }
+
+    function drawStatic() {
+      ctx.clearRect(0, 0, w, h);
+      for (const s of stars) {
+        const x = w / 2 + (s.x / s.z) * Math.max(w, h) * 0.5;
+        const y = h / 2 + (s.y / s.z) * Math.max(w, h) * 0.5;
+        ctx.fillStyle = `rgba(255,255,255,${Math.min(1, (1 - s.z) * 1.4)})`;
+        ctx.fillRect(x, y, 1.2, 1.2);
+      }
+    }
+
+    resize();
+    stars = Array.from({ length: STAR_COUNT }, () => newStar());
+    window.addEventListener("resize", () => {
+      resize();
+      if (reduceMotion) drawStatic();
+    });
+    if (reduceMotion) drawStatic();
+    else requestAnimationFrame(frame);
+
+    // ---------- Random quote ----------
+    const text = document.getElementById("quote-text");
+    const episode = document.getElementById("quote-episode");
+    const title = document.getElementById("quote-title");
+    const button = document.getElementById("new-quote");
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+    // textContent (not innerHTML) so quote text is never parsed as HTML.
+    function show(q) {
+      text.textContent = q.quote;
+      episode.textContent = `S${q.season} · E${q.episode}`;
+      title.textContent = q.title;
+    }
+
+    async function fetchQuote() {
+      const res = await fetch("/quotes/random");
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    }
+
+    // Warp out, fetch while the stars streak, drop back to cruise speed.
+    async function jump() {
+      button.disabled = true;
+      text.classList.add("jumping");
+      if (!reduceMotion) targetSpeed = WARP;
+      try {
+        const [q] = await Promise.all([fetchQuote(), sleep(reduceMotion ? 0 : 900)]);
+        show(q);
+      } catch (err) {
+        text.textContent = "I have a bad feeling about this. (Couldn't load a quote.)";
+        console.error(err);
+      } finally {
+        targetSpeed = CRUISE;
+        text.classList.remove("jumping");
+        button.disabled = false;
+      }
+    }
+
+    button.addEventListener("click", jump);
+    fetchQuote().then(show).catch(() => {});
+
+    // Show this deployment's own URL in the curl example.
+    document.getElementById("base-url").textContent = location.origin;
+
+    fetch("/api")
+      .then((res) => res.json())
+      .then((info) => {
+        document.getElementById("quote-count").textContent = info.quote_count;
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>

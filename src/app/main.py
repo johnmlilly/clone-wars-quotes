@@ -1,6 +1,9 @@
 """FastAPI routes for the Clone Wars Quotes API."""
 
+from pathlib import Path
+
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse
 
 from app.data import QUOTES, filter_quotes, get_quote, random_quote
 from app.models import Quote
@@ -11,8 +14,18 @@ app = FastAPI(
 )
 
 
-@app.get("/")
-def root() -> dict:
+# Read once at import, like QUOTES, so it's part of the Workers memory snapshot.
+HOME_PAGE = (Path(__file__).parent / "static" / "index.html").read_text()
+
+
+@app.get("/", response_class=HTMLResponse, include_in_schema=False)
+def home() -> str:
+    """Serve the HTML home page."""
+    return HOME_PAGE
+
+
+@app.get("/api")
+def api_info() -> dict:
     """Welcome message with a link to the docs."""
     return {"message": "Hello there!", "docs": "/docs", "quote_count": len(QUOTES)}
 
